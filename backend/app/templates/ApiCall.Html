@@ -1,0 +1,99 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>API Call</title>
+        <script src="{% static 'Button.js' %}"></script>
+    </head>
+<body>
+    <table>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Input</th>
+                        <th>Api Call Button</th>
+                    </tr>
+                    <tr id="row-item">
+                        <td>Button</td>
+                        <td>Add dummy user to database</td>
+                        <td></td>
+                        <td><button class="button" onclick="createDummyUser()">Click me</button></td>
+                    </tr>
+                    <tr id="row-item">
+                        <td>Button</td>
+                        <td>Add specific user to database using ID</td>
+                        <td><input type="number" id="addID" name="addID" required></td>
+                        <td><button class="button" onclick="addEntryID()">Click me</button></td>
+                    </tr>
+                    <tr id="row-item">
+                        <td>Button</td>
+                        <td>Delete specific user to database using ID</td>
+                        <td><input type="number" id="deleteID" name="deleteID" required></td>
+                        <!-- <td><button class="button" onclick="getInput()">Click me</button></td> -->
+                        <td><button class="button" onclick="deleteUserID()">Click me</button></td>
+                    </tr>
+                    <tr id="row-item">
+                        <td>Button</td>
+                        <td>Delete latest user in database</td>
+                        <td></td>
+                        <td><button class="button" onclick="deleteLatestUser()">Click me</button></td>
+                    </tr>
+                    <tr id="row-item">
+                        <td>Button</td>
+                        <td>Delete All Entry</td>
+                        <td></td>
+                        <td><button class="button" onclick="deleteAllUser()">Click me</button></td>
+                    </tr>
+                    <tr id="row-item">
+                        <td>Button</td>
+                        <td>Update Specific User using ID</td>
+                        <td><input type="number" id="updateID" name="updateID" required></td>
+                        <td><button class="button" onclick="updateUserID()">Click me</button></td>
+                    </tr>
+                    <tr>
+                    </tr>
+                </table>
+            </td>
+            <td></td>
+            <td>
+                <table>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Last Login</th>
+                        <th>Is Superuser</th>
+                        <th>Is Staff</th>
+                        <th>Is Active</th>
+                        <th>Date Joined</th>
+                        <th>Name</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Date of Birth</th>
+                    </tr>
+                    {% for user in user %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.password }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.last_login }}</td>
+                        <td>{{ user.is_superuser }}</td>
+                        <td>{{ user.is_staff }}</td>
+                        <td>{{ user.is_active }}</td>
+                        <td>{{ user.date_joined }}</td>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.first_name }}</td>
+                        <td>{{ user.last_name }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
